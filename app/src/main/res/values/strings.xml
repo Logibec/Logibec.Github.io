@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MyVault</string>
+    <string name="nav_home">Inicio</string>
+    <string name="nav_library">Biblioteca</string>
+    <string name="nav_search">Buscar</string>
+    <string name="nav_profile">Perfil</string>
+    <string name="status_pending">Pendiente</string>
+    <string name="status_in_progress">En progreso</string>
+    <string name="status_completed">Completado</string>
+    <string name="type_movie">Película</string>
+    <string name="type_series">Serie</string>
+    <string name="type_book">Libro</string>
+    <string name="type_manga">Manga</string>
+    <string name="type_game">Juego</string>
+</resources>

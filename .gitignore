@@ -1,0 +1,21 @@
+*.iml
+.gradle
+/local.properties
+/.idea
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+*.ap_
+*.aab
+*.apk
+*.dex
+*.class
+
+# Keystore
+*.jks
+*.keystore
+
+# Firebase - reemplazar con tu google-services.json real
+# google-services.json

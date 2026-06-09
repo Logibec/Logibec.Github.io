@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Tema base para la Activity — Compose reemplaza el resto -->
+    <style name="Theme.MyVault" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:windowBackground">@color/netflix_background</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+
+    <!-- Tema para la SplashScreen -->
+    <style name="Theme.MyVault.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/netflix_background</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_splash_logo</item>
+        <item name="postSplashScreenTheme">@style/Theme.MyVault</item>
+    </style>
+</resources>
