@@ -1,0 +1,331 @@
+[
+  {
+    "id": "1",
+    "slug": "samsung-galaxy-s24-ultra",
+    "name": "Samsung Galaxy S24 Ultra",
+    "category": "smartphones",
+    "brand": "Samsung",
+    "price": 1899000,
+    "priceFrom": true,
+    "images": [
+      "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=800&q=80",
+      "https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=800&q=80",
+      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800&q=80",
+      "https://images.unsplash.com/photo-1574944985070-8f3ebc6b79d2?w=800&q=80"
+    ],
+    "rating": 4.8,
+    "reviewCount": 312,
+    "description": "El Samsung Galaxy S24 Ultra redefine la experiencia móvil con su pantalla Dynamic AMOLED 2X de 6.8\", procesador Snapdragon 8 Gen 3, cámara de 200MP y S Pen integrado. Disponible en 256GB y 512GB.",
+    "featured": true,
+    "variants": [
+      { "id": "s24u-256", "name": "256 GB - Titanium Black", "price": 1899000, "stock": 5 },
+      { "id": "s24u-512", "name": "512 GB - Titanium Gray", "price": 2199000, "stock": 3 }
+    ],
+    "tags": ["android", "5g", "spen", "flagship"]
+  },
+  {
+    "id": "2",
+    "slug": "samsung-galaxy-a55",
+    "name": "Samsung Galaxy A55 5G",
+    "category": "smartphones",
+    "brand": "Samsung",
+    "price": 749000,
+    "priceFrom": false,
+    "images": [
+      "https://images.unsplash.com/photo-1556656793-08538906a9f8?w=800&q=80",
+      "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=800&q=80",
+      "https://images.unsplash.com/photo-1581993192008-63e896f4f744?w=800&q=80",
+      "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=800&q=80"
+    ],
+    "rating": 4.5,
+    "reviewCount": 187,
+    "description": "El Galaxy A55 5G combina diseño premium con rendimiento sobresaliente. Pantalla Super AMOLED de 6.6\", cámara triple de 50MP y batería de 5000 mAh con carga rápida de 25W.",
+    "featured": true,
+    "tags": ["android", "5g", "midrange"]
+  },
+  {
+    "id": "3",
+    "slug": "honor-magic6-pro",
+    "name": "Honor Magic6 Pro",
+    "category": "smartphones",
+    "brand": "Honor",
+    "price": 1299000,
+    "priceFrom": false,
+    "images": [
+      "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=800&q=80",
+      "https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=800&q=80",
+      "https://images.unsplash.com/photo-1565849904461-04a58ad377e0?w=800&q=80",
+      "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&q=80"
+    ],
+    "rating": 4.7,
+    "reviewCount": 94,
+    "description": "Honor Magic6 Pro con Snapdragon 8 Gen 3, pantalla LTPO de 6.8\", cámara periscópica de 180MP y carga inalámbrica de 66W. Una bestia tecnológica al mejor precio.",
+    "featured": false,
+    "tags": ["android", "5g", "flagship", "honor"]
+  },
+  {
+    "id": "4",
+    "slug": "apple-watch-series-9",
+    "name": "Apple Watch Series 9",
+    "category": "wearables",
+    "brand": "Apple",
+    "price": 899000,
+    "priceFrom": true,
+    "images": [
+      "https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=800&q=80",
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=80",
+      "https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?w=800&q=80",
+      "https://images.unsplash.com/photo-1551816230-ef5deaed4a26?w=800&q=80"
+    ],
+    "rating": 4.9,
+    "reviewCount": 543,
+    "description": "Apple Watch Series 9 con chip S9, pantalla Retina siempre activa, detección de caídas, ECG, SpO2 y hasta 18 horas de batería. Disponible en 41mm y 45mm.",
+    "featured": true,
+    "variants": [
+      { "id": "aw9-41-midnight", "name": "41mm - Midnight Aluminium", "price": 899000, "stock": 8 },
+      { "id": "aw9-45-midnight", "name": "45mm - Midnight Aluminium", "price": 979000, "stock": 6 },
+      { "id": "aw9-41-starlight", "name": "41mm - Starlight Aluminium", "price": 899000, "stock": 4 },
+      { "id": "aw9-45-starlight", "name": "45mm - Starlight Aluminium", "price": 979000, "stock": 5 }
+    ],
+    "tags": ["apple", "smartwatch", "fitness", "health"]
+  },
+  {
+    "id": "5",
+    "slug": "apple-watch-ultra-2",
+    "name": "Apple Watch Ultra 2",
+    "category": "wearables",
+    "brand": "Apple",
+    "price": 1799000,
+    "priceFrom": false,
+    "images": [
+      "https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=800&q=80",
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=80",
+      "https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?w=800&q=80",
+      "https://images.unsplash.com/photo-1551816230-ef5deaed4a26?w=800&q=80"
+    ],
+    "rating": 4.9,
+    "reviewCount": 221,
+    "description": "El Apple Watch más extremo. Caja de titanio de 49mm, pantalla de 2000 nits, GPS de doble frecuencia, 60 horas de batería y resistencia al agua a 100m. Para atletas de élite.",
+    "featured": true,
+    "tags": ["apple", "smartwatch", "ultra", "extreme-sports"]
+  },
+  {
+    "id": "6",
+    "slug": "samsung-galaxy-watch6",
+    "name": "Samsung Galaxy Watch6 Classic",
+    "category": "wearables",
+    "brand": "Samsung",
+    "price": 699000,
+    "priceFrom": true,
+    "images": [
+      "https://images.unsplash.com/photo-1617043786394-f977fa12eddf?w=800&q=80",
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=80",
+      "https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?w=800&q=80",
+      "https://images.unsplash.com/photo-1551816230-ef5deaed4a26?w=800&q=80"
+    ],
+    "rating": 4.6,
+    "reviewCount": 168,
+    "description": "Galaxy Watch6 Classic con bisel giratorio físico, monitoreo avanzado de salud, ECG, presión arterial y hasta 40 horas de batería. Compatible con Android.",
+    "featured": false,
+    "variants": [
+      { "id": "gw6c-43-black", "name": "43mm - Black", "price": 699000, "stock": 7 },
+      { "id": "gw6c-47-black", "name": "47mm - Black", "price": 779000, "stock": 5 }
+    ],
+    "tags": ["android", "smartwatch", "samsung"]
+  },
+  {
+    "id": "7",
+    "slug": "jbl-charge-5",
+    "name": "JBL Charge 5",
+    "category": "audio",
+    "brand": "JBL",
+    "price": 299000,
+    "priceFrom": false,
+    "images": [
+      "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=800&q=80",
+      "https://images.unsplash.com/photo-1545454675-3531b543be5d?w=800&q=80",
+      "https://images.unsplash.com/photo-1484704849700-f032a568e944?w=800&q=80",
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80"
+    ],
+    "rating": 4.7,
+    "reviewCount": 892,
+    "description": "Parlante portátil JBL Charge 5 con sonido potente a 360°, resistencia al agua IP67, 20 horas de batería y función de carga para tus dispositivos. El compañero perfecto para cualquier aventura.",
+    "featured": true,
+    "tags": ["bluetooth", "portable", "waterproof", "party"]
+  },
+  {
+    "id": "8",
+    "slug": "jbl-flip-6",
+    "name": "JBL Flip 6",
+    "category": "audio",
+    "brand": "JBL",
+    "price": 199000,
+    "priceFrom": false,
+    "images": [
+      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
+      "https://images.unsplash.com/photo-1545454675-3531b543be5d?w=800&q=80",
+      "https://images.unsplash.com/photo-1484704849700-f032a568e944?w=800&q=80",
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80"
+    ],
+    "rating": 4.6,
+    "reviewCount": 654,
+    "description": "JBL Flip 6 con sonido puro y potente, resistente al agua y polvo IP67, 12 horas de reproducción y diseño compacto ideal para llevar a todos lados.",
+    "featured": false,
+    "tags": ["bluetooth", "portable", "waterproof"]
+  },
+  {
+    "id": "9",
+    "slug": "sony-playstation-5",
+    "name": "Sony PlayStation 5",
+    "category": "gaming",
+    "brand": "Sony",
+    "price": 1299000,
+    "priceFrom": false,
+    "images": [
+      "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=800&q=80",
+      "https://images.unsplash.com/photo-1607853202273-797f1c22a38e?w=800&q=80",
+      "https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=800&q=80",
+      "https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=800&q=80"
+    ],
+    "rating": 4.9,
+    "reviewCount": 1203,
+    "description": "PlayStation 5 con SSD ultrarrápido, ray tracing, 4K/120fps y retrocompatibilidad con PS4. Incluye control DualSense con retroalimentación háptica y gatillos adaptativos.",
+    "featured": true,
+    "tags": ["console", "4k", "gaming", "sony"]
+  },
+  {
+    "id": "10",
+    "slug": "dualsense-ps5",
+    "name": "Control DualSense PS5",
+    "category": "gaming",
+    "brand": "Sony",
+    "price": 279000,
+    "priceFrom": true,
+    "images": [
+      "https://images.unsplash.com/photo-1607853202273-797f1c22a38e?w=800&q=80",
+      "https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=800&q=80",
+      "https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=800&q=80",
+      "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=800&q=80"
+    ],
+    "rating": 4.8,
+    "reviewCount": 445,
+    "description": "Control inalámbrico DualSense para PS5 con retroalimentación háptica avanzada, gatillos adaptativos, micrófono integrado y hasta 12 horas de batería.",
+    "featured": false,
+    "variants": [
+      { "id": "ds5-white", "name": "White", "price": 279000, "stock": 12 },
+      { "id": "ds5-midnight-black", "name": "Midnight Black", "price": 279000, "stock": 8 },
+      { "id": "ds5-cosmic-red", "name": "Cosmic Red", "price": 299000, "stock": 5 }
+    ],
+    "tags": ["controller", "ps5", "gaming"]
+  },
+  {
+    "id": "11",
+    "slug": "xbox-series-x",
+    "name": "Xbox Series X",
+    "category": "gaming",
+    "brand": "Microsoft",
+    "price": 1199000,
+    "priceFrom": false,
+    "images": [
+      "https://images.unsplash.com/photo-1605901309584-818e25960a8f?w=800&q=80",
+      "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=800&q=80",
+      "https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=800&q=80",
+      "https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=800&q=80"
+    ],
+    "rating": 4.8,
+    "reviewCount": 876,
+    "description": "Xbox Series X con 12 teraflops de potencia, SSD NVMe de 1TB, Quick Resume para múltiples juegos, retrocompatibilidad con miles de títulos y 4K/120fps.",
+    "featured": false,
+    "tags": ["console", "4k", "gaming", "microsoft"]
+  },
+  {
+    "id": "12",
+    "slug": "ipad-air-m2",
+    "name": "iPad Air M2 (2024)",
+    "category": "tablets",
+    "brand": "Apple",
+    "price": 1199000,
+    "priceFrom": true,
+    "images": [
+      "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800&q=80",
+      "https://images.unsplash.com/photo-1587033411391-5d9e51cce126?w=800&q=80",
+      "https://images.unsplash.com/photo-1619086303291-0ef7699e4b31?w=800&q=80",
+      "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&q=80"
+    ],
+    "rating": 4.9,
+    "reviewCount": 389,
+    "description": "iPad Air con chip M2, pantalla Liquid Retina de 11\" o 13\", compatible con Apple Pencil Pro y Magic Keyboard. Ideal para creativos y profesionales.",
+    "featured": true,
+    "variants": [
+      { "id": "ipad-air-11-128", "name": "11\" - 128 GB - Blue", "price": 1199000, "stock": 6 },
+      { "id": "ipad-air-11-256", "name": "11\" - 256 GB - Blue", "price": 1399000, "stock": 4 },
+      { "id": "ipad-air-13-128", "name": "13\" - 128 GB - Starlight", "price": 1599000, "stock": 3 },
+      { "id": "ipad-air-13-256", "name": "13\" - 256 GB - Starlight", "price": 1799000, "stock": 2 }
+    ],
+    "tags": ["apple", "tablet", "m2", "creative"]
+  },
+  {
+    "id": "13",
+    "slug": "samsung-galaxy-tab-s9",
+    "name": "Samsung Galaxy Tab S9+",
+    "category": "tablets",
+    "brand": "Samsung",
+    "price": 1099000,
+    "priceFrom": true,
+    "images": [
+      "https://images.unsplash.com/photo-1611532736573-418856a9a0f3?w=800&q=80",
+      "https://images.unsplash.com/photo-1587033411391-5d9e51cce126?w=800&q=80",
+      "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800&q=80",
+      "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&q=80"
+    ],
+    "rating": 4.7,
+    "reviewCount": 215,
+    "description": "Galaxy Tab S9+ con pantalla Dynamic AMOLED 2X de 12.4\", Snapdragon 8 Gen 2, S Pen incluido, resistencia al agua IP68 y carga ultra rápida de 45W.",
+    "featured": false,
+    "variants": [
+      { "id": "tabs9p-256-beige", "name": "256 GB - Beige", "price": 1099000, "stock": 5 },
+      { "id": "tabs9p-512-graphite", "name": "512 GB - Graphite", "price": 1299000, "stock": 3 }
+    ],
+    "tags": ["android", "tablet", "samsung", "s-pen"]
+  },
+  {
+    "id": "14",
+    "slug": "airpods-pro-2",
+    "name": "AirPods Pro (2da Generación)",
+    "category": "audio",
+    "brand": "Apple",
+    "price": 699000,
+    "priceFrom": false,
+    "images": [
+      "https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=800&q=80",
+      "https://images.unsplash.com/photo-1606400082777-ef05f3c5cde2?w=800&q=80",
+      "https://images.unsplash.com/photo-1484704849700-f032a568e944?w=800&q=80",
+      "https://images.unsplash.com/photo-1545454675-3531b543be5d?w=800&q=80"
+    ],
+    "rating": 4.8,
+    "reviewCount": 678,
+    "description": "AirPods Pro con chip H2, cancelación activa de ruido de próxima generación, audio adaptativo, hasta 30 horas de batería total y carga MagSafe.",
+    "featured": true,
+    "tags": ["apple", "earbuds", "anc", "wireless"]
+  },
+  {
+    "id": "15",
+    "slug": "honor-magic-watch-4-pro",
+    "name": "Honor Magic Watch 4 Pro",
+    "category": "wearables",
+    "brand": "Honor",
+    "price": 449000,
+    "priceFrom": false,
+    "images": [
+      "https://images.unsplash.com/photo-1617043786394-f977fa12eddf?w=800&q=80",
+      "https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=800&q=80",
+      "https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=800&q=80",
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=80"
+    ],
+    "rating": 4.5,
+    "reviewCount": 132,
+    "description": "Honor Magic Watch 4 Pro con GPS dual, monitoreo de salud 24/7, SpO2, ECG, más de 100 modos deportivos y hasta 14 días de batería. Diseño premium a precio competitivo.",
+    "featured": false,
+    "tags": ["honor", "smartwatch", "fitness", "gps"]
+  }
+]

@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --brand-blue: #3b82f6;
+  --brand-dark: #1e3a8a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: #fff;
+  color: #111;
+}
+
+.hero-gradient {
+  background: radial-gradient(ellipse at center, #1d4ed8 0%, #1e3a8a 45%, #0f172a 100%);
+}
+
+.hero-rays {
+  background-image:
+    conic-gradient(from 180deg at 50% 50%,
+      transparent 0deg,
+      rgba(59, 130, 246, 0.08) 20deg,
+      transparent 40deg,
+      rgba(59, 130, 246, 0.06) 60deg,
+      transparent 80deg,
+      rgba(59, 130, 246, 0.08) 100deg,
+      transparent 120deg,
+      rgba(59, 130, 246, 0.04) 140deg,
+      transparent 160deg,
+      rgba(59, 130, 246, 0.08) 180deg,
+      transparent 200deg,
+      rgba(59, 130, 246, 0.06) 220deg,
+      transparent 240deg,
+      rgba(59, 130, 246, 0.08) 260deg,
+      transparent 280deg,
+      rgba(59, 130, 246, 0.04) 300deg,
+      transparent 320deg,
+      rgba(59, 130, 246, 0.08) 340deg,
+      transparent 360deg
+    );
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
