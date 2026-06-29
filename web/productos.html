@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Productos | House Of Everything</title>
+  <meta name="description" content="Explorá todo nuestro catálogo: smartphones, gaming, wearables, audio y tablets en Argentina.">
+  <link rel="stylesheet" href="css/styles.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script defer src="js/main.js"></script>
+</head>
+<body x-data>
+
+  <div id="header-mount"></div>
+
+  <div class="container" style="padding-top:2.5rem;padding-bottom:4rem;">
+
+    <!-- Encabezado -->
+    <div style="margin-bottom:2rem;">
+      <h1 id="page-title" style="font-size:1.875rem;font-weight:300;color:#111827;letter-spacing:-.01em;">Todos los productos</h1>
+      <p id="product-count" style="color:#6b7280;margin-top:.25rem;"></p>
+    </div>
+
+    <!-- Filtros -->
+    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:.75rem;margin-bottom:2rem;">
+      <div style="display:flex;flex-wrap:wrap;gap:.5rem;" id="cat-pills"></div>
+      <div style="margin-left:auto;">
+        <select id="sort-select" style="font-size:.875rem;border:1px solid #e5e7eb;border-radius:.5rem;padding:.375rem .75rem;color:#374151;background:#fff;outline:none;cursor:pointer;">
+          <option value="default">Relevancia</option>
+          <option value="name-asc">Nombre A–Z</option>
+          <option value="name-desc">Nombre Z–A</option>
+          <option value="price-asc">Precio: menor a mayor</option>
+          <option value="price-desc">Precio: mayor a menor</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Grid -->
+    <div class="grid-products" id="products-grid"></div>
+
+    <!-- Empty state -->
+    <div id="empty-state" style="display:none;text-align:center;padding:5rem 0;color:#9ca3af;">
+      <svg width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" style="margin:0 auto 1rem;">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+      </svg>
+      <p style="font-size:1.125rem;">No hay productos en esta categoría.</p>
+    </div>
+  </div>
+
+  <div id="footer-mount"></div>
+
+  <script>
+    const categories = [
+      { value: '', label: 'Todos' },
+      { value: 'smartphones', label: 'Smartphones' },
+      { value: 'gaming', label: 'Gaming' },
+      { value: 'wearables', label: 'Wearables' },
+      { value: 'audio', label: 'Audio' },
+      { value: 'tablets', label: 'Tablets' },
+    ];
+
+    const catLabels = {
+      smartphones: 'Smartphones', gaming: 'Gaming', wearables: 'Wearables',
+      audio: 'Audio', tablets: 'Tablets',
+    };
+
+    let allProducts = [];
+    let activeCategory = new URLSearchParams(location.search).get('categoria') || '';
+    let activeSort = 'default';
+
+    function getFiltered() {
+      let result = activeCategory
+        ? allProducts.filter(p => p.category === activeCategory)
+        : [...allProducts];
+      switch (activeSort) {
+        case 'name-asc':  result.sort((a,b) => a.name.localeCompare(b.name)); break;
+        case 'name-desc': result.sort((a,b) => b.name.localeCompare(a.name)); break;
+        case 'price-asc': result.sort((a,b) => a.price - b.price); break;
+        case 'price-desc':result.sort((a,b) => b.price - a.price); break;
+      }
+      return result;
+    }
+
+    function render() {
+      const filtered = getFiltered();
+      const grid = document.getElementById('products-grid');
+      const empty = document.getElementById('empty-state');
+      const title = document.getElementById('page-title');
+      const count = document.getElementById('product-count');
+
+      title.textContent = activeCategory ? (catLabels[activeCategory] ?? activeCategory) : 'Todos los productos';
+      count.textContent = `${filtered.length} producto${filtered.length !== 1 ? 's' : ''} encontrado${filtered.length !== 1 ? 's' : ''}`;
+
+      if (filtered.length === 0) {
+        grid.style.display = 'none';
+        empty.style.display = 'block';
+      } else {
+        grid.style.display = '';
+        empty.style.display = 'none';
+        grid.innerHTML = filtered.map(productCardHTML).join('');
+      }
+
+      // Actualizar pills
+      document.querySelectorAll('.cat-pill').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.cat === activeCategory);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      document.getElementById('header-mount').innerHTML = renderHeader('productos');
+      document.getElementById('footer-mount').innerHTML = renderFooter();
+
+      // Pills
+      document.getElementById('cat-pills').innerHTML = categories.map(c =>
+        `<button class="cat-pill${c.value === activeCategory ? ' active' : ''}" data-cat="${c.value}">${c.label}</button>`
+      ).join('');
+
+      document.getElementById('cat-pills').addEventListener('click', e => {
+        const btn = e.target.closest('.cat-pill');
+        if (!btn) return;
+        activeCategory = btn.dataset.cat;
+        render();
+      });
+
+      document.getElementById('sort-select').addEventListener('change', e => {
+        activeSort = e.target.value;
+        render();
+      });
+
+      const res = await fetch('data/products.json');
+      allProducts = await res.json();
+      render();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>House Of Everything | Tecnología seleccionada</title>
+  <meta name="description" content="Tecnología seleccionada con foco en calidad, diseño y rendimiento. Smartphones, wearables, gaming, audio y más en Argentina.">
+  <meta property="og:title" content="House Of Everything | Tecnología seleccionada">
+  <meta property="og:description" content="Tecnología seleccionada con foco en calidad, diseño y rendimiento.">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="css/styles.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script defer src="js/main.js"></script>
+</head>
+<body x-data>
+
+  <div id="header-mount"></div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-rays"></div>
+    <div class="hero-glow-1"></div>
+    <div class="hero-glow-2"></div>
+
+    <div style="position:relative;z-index:10;text-align:center;padding:0 1rem;max-width:48rem;margin:0 auto;">
+      <div style="display:flex;justify-content:center;margin-bottom:2rem;">
+        <div style="padding:1rem;background:rgba(255,255,255,.1);border-radius:50%;border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(8px);">
+          <svg width="80" height="80" viewBox="0 0 40 40" fill="none">
+            <circle cx="20" cy="20" r="20" fill="url(#heroLg)"/>
+            <path d="M20 10L9 19.5H12V30H18V24H22V30H28V19.5H31L20 10Z"
+              fill="white" fill-opacity=".15" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+            <circle cx="20" cy="22" r="4.5" stroke="white" stroke-width="1.8" fill="none"/>
+            <path d="M20 17.5V19.5" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+            <defs>
+              <linearGradient id="heroLg" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#1d4ed8"/><stop offset="1" stop-color="#3b82f6"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+      </div>
+
+      <h1 style="font-size:clamp(2.5rem,7vw,4.5rem);font-weight:300;color:#fff;letter-spacing:-.02em;line-height:1.1;margin-bottom:1.5rem;">
+        House Of
+        <span style="font-weight:600;background:linear-gradient(to right,#93c5fd,#67e8f9);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
+          Everything
+        </span>
+      </h1>
+
+      <p style="font-size:1.125rem;color:rgba(219,234,254,.8);font-weight:300;line-height:1.7;margin-bottom:2.5rem;max-width:36rem;margin-left:auto;margin-right:auto;">
+        Tecnología seleccionada con foco en calidad, diseño y rendimiento.
+      </p>
+
+      <a href="productos.html" class="btn-hero">
+        Explorar tienda
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="hero-fade"></div>
+  </section>
+
+  <!-- COLECCIONES -->
+  <section style="padding:5rem 0;">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:3rem;">
+        <h2 style="font-size:1.875rem;font-weight:300;color:#111827;letter-spacing:-.01em;">Colecciones</h2>
+        <p style="color:#6b7280;margin-top:.5rem;">Explorá por categoría</p>
+      </div>
+      <div class="grid-collections" id="collections-grid"></div>
+    </div>
+  </section>
+
+  <!-- PRODUCTOS DESTACADOS -->
+  <section style="background:#f9fafb;padding:5rem 0;">
+    <div class="container">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:2.5rem;flex-wrap:wrap;gap:1rem;">
+        <div>
+          <h2 style="font-size:1.875rem;font-weight:300;color:#111827;letter-spacing:-.01em;">Lo mejor de House of Everything</h2>
+          <p style="color:#6b7280;margin-top:.25rem;">Productos seleccionados para vos</p>
+        </div>
+        <a href="productos.html" style="display:flex;align-items:center;gap:.375rem;font-size:.875rem;color:#2563eb;font-weight:500;text-decoration:none;">
+          Ver todo
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+      <div class="grid-products" id="featured-grid"></div>
+    </div>
+  </section>
+
+  <!-- COMPRA CON CONFIANZA -->
+  <section style="padding:5rem 0;">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:3rem;">
+        <h2 style="font-size:1.875rem;font-weight:300;color:#111827;letter-spacing:-.01em;">Compra con confianza</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2.5rem;">
+        <div class="trust-card" style="text-align:center;">
+          <div class="trust-icon-wrap">
+            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4a2 2 0 012 2v6a2 2 0 01-2 2h-1"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+            </svg>
+          </div>
+          <h3 style="font-weight:600;font-size:1.125rem;color:#111827;margin-bottom:.5rem;">Envíos a todo el país</h3>
+          <p style="font-size:.875rem;color:#6b7280;line-height:1.6;max-width:18rem;margin:0 auto;">Coordinamos el envío a cualquier punto de Argentina con seguimiento en tiempo real.</p>
+        </div>
+        <div class="trust-card" style="text-align:center;">
+          <div class="trust-icon-wrap">
+            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/>
+            </svg>
+          </div>
+          <h3 style="font-weight:600;font-size:1.125rem;color:#111827;margin-bottom:.5rem;">Compra segura</h3>
+          <p style="font-size:.875rem;color:#6b7280;line-height:1.6;max-width:18rem;margin:0 auto;">Todos los pagos procesados por Mercado Pago con protección al comprador.</p>
+        </div>
+        <div class="trust-card" style="text-align:center;">
+          <div class="trust-icon-wrap">
+            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+            </svg>
+          </div>
+          <h3 style="font-weight:600;font-size:1.125rem;color:#111827;margin-bottom:.5rem;">Atención personalizada</h3>
+          <p style="font-size:.875rem;color:#6b7280;line-height:1.6;max-width:18rem;margin:0 auto;">Respondemos todas tus consultas antes, durante y después de tu compra.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ECOSISTEMA APPLE -->
+  <section style="background:#030712;padding:5rem 0;">
+    <div class="container">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:2.5rem;flex-wrap:wrap;gap:1rem;">
+        <div>
+          <p style="font-size:.75rem;color:#60a5fa;font-weight:500;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.25rem;">Ecosistema</p>
+          <h2 style="font-size:1.875rem;font-weight:300;color:#fff;letter-spacing:-.01em;">Apple en House Of Everything</h2>
+        </div>
+        <a href="productos.html?categoria=wearables" style="display:flex;align-items:center;gap:.375rem;font-size:.875rem;color:#60a5fa;font-weight:500;text-decoration:none;">
+          Ver todo
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+      <div class="grid-eco" id="eco-grid"></div>
+    </div>
+  </section>
+
+  <div id="footer-mount"></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Header y footer
+      document.getElementById('header-mount').innerHTML = renderHeader('home');
+      document.getElementById('footer-mount').innerHTML = renderFooter();
+
+      // Cargar productos
+      const res = await fetch('data/products.json');
+      const products = await res.json();
+
+      // Colecciones
+      const collections = [
+        { icon: `<svg width="24" height="24" fill="none" stroke="white" stroke-width="1.5" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>`,
+          label: 'Gaming', desc: 'Consolas y accesorios', href: 'productos.html?categoria=gaming',
+          grad: 'linear-gradient(135deg,#7c3aed,#a21caf)' },
+        { icon: `<svg width="24" height="24" fill="none" stroke="white" stroke-width="1.5" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>`,
+          label: 'Smartphones', desc: 'Los mejores teléfonos', href: 'productos.html?categoria=smartphones',
+          grad: 'linear-gradient(135deg,#2563eb,#0891b2)' },
+        { icon: `<svg width="24" height="24" fill="none" stroke="white" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
+          label: 'Wearables', desc: 'Relojes inteligentes', href: 'productos.html?categoria=wearables',
+          grad: 'linear-gradient(135deg,#059669,#0d9488)' },
+        { icon: `<svg width="24" height="24" fill="none" stroke="white" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0118 0v6"/><path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z"/></svg>`,
+          label: 'Audio', desc: 'Parlantes y auriculares', href: 'productos.html?categoria=audio',
+          grad: 'linear-gradient(135deg,#dc2626,#db2777)' },
+      ];
+      document.getElementById('collections-grid').innerHTML = collections.map(c => `
+        <a href="${c.href}" class="collection-card">
+          <div class="collection-icon" style="background:${c.grad};">${c.icon}</div>
+          <div>
+            <h3 style="font-weight:600;color:#111827;font-size:1rem;">${c.label}</h3>
+            <p style="font-size:.875rem;color:#6b7280;margin-top:.125rem;">${c.desc}</p>
+          </div>
+          <div style="display:flex;align-items:center;gap:.25rem;color:#2563eb;font-size:.875rem;font-weight:500;">
+            Ver más
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </a>`).join('');
+
+      // Destacados
+      const featured = products.filter(p => p.featured);
+      document.getElementById('featured-grid').innerHTML = featured.map(productCardHTML).join('');
+
+      // Ecosistema Apple
+      const heroP = products.find(p => p.slug === 'apple-watch-ultra-2');
+      const minis = ['apple-watch-series-9', 'airpods-pro-2', 'ipad-air-m2', 'samsung-galaxy-s24-ultra']
+        .map(s => products.find(p => p.slug === s)).filter(Boolean);
+
+      document.getElementById('eco-grid').innerHTML = `
+        <a href="producto.html?slug=${heroP.slug}" class="eco-hero">
+          <div>
+            <p style="color:#60a5fa;font-size:.75rem;font-weight:500;margin-bottom:.5rem;">Más vendido</p>
+            <h3 style="font-size:2rem;font-weight:300;color:#fff;margin-bottom:.5rem;">${heroP.name}</h3>
+            <p style="color:#9ca3af;font-size:.875rem;margin-bottom:1rem;">El smartwatch más extremo de Apple</p>
+            <p style="font-size:1.5rem;font-weight:600;color:#fff;">${formatPrice(heroP.price)}</p>
+          </div>
+          <img src="${heroP.images[0]}" alt="${heroP.name}" style="position:absolute;bottom:0;right:0;width:14rem;height:14rem;object-fit:cover;opacity:.7;transition:transform .5s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+          <div style="position:relative;z-index:1;display:flex;align-items:center;gap:.375rem;color:#60a5fa;font-size:.875rem;font-weight:500;margin-top:1.5rem;">
+            Ver producto
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </a>
+        <div class="grid-eco-mini">
+          ${minis.map(p => `
+          <a href="producto.html?slug=${p.slug}" class="eco-mini">
+            <img src="${p.images[0]}" alt="${p.name}">
+            <p style="color:#fff;font-size:.875rem;font-weight:500;" class="clamp-2">${p.name}</p>
+            <p style="color:#60a5fa;font-size:.875rem;font-weight:600;">${formatPrice(p.price)}</p>
+          </a>`).join('')}
+        </div>`;
+    });
+  </script>
+</body>
+</html>

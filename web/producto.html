@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="meta-title">Producto | House Of Everything</title>
+  <meta name="description" id="meta-desc" content="">
+  <link rel="stylesheet" href="css/styles.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script defer src="js/main.js"></script>
+</head>
+<body x-data>
+
+  <div id="header-mount"></div>
+
+  <!-- Loading state -->
+  <div id="loading" class="container" style="padding:4rem 0;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;">
+      <div>
+        <div class="skeleton" style="aspect-ratio:1;border-radius:1rem;"></div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;margin-top:.75rem;">
+          <div class="skeleton" style="aspect-ratio:1;border-radius:.5rem;"></div>
+          <div class="skeleton" style="aspect-ratio:1;border-radius:.5rem;"></div>
+          <div class="skeleton" style="aspect-ratio:1;border-radius:.5rem;"></div>
+          <div class="skeleton" style="aspect-ratio:1;border-radius:.5rem;"></div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:1rem;">
+        <div class="skeleton" style="height:1.5rem;border-radius:.5rem;width:30%;"></div>
+        <div class="skeleton" style="height:2.5rem;border-radius:.5rem;"></div>
+        <div class="skeleton" style="height:1rem;border-radius:.5rem;width:50%;"></div>
+        <div class="skeleton" style="height:3rem;border-radius:.5rem;margin-top:.5rem;"></div>
+        <div class="skeleton" style="height:3rem;border-radius:.5rem;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product detail -->
+  <div id="product-detail" style="display:none;" class="container" style="padding-top:2rem;padding-bottom:4rem;">
+  </div>
+
+  <!-- Not found -->
+  <div id="not-found" style="display:none;text-align:center;padding:6rem 1rem;">
+    <p style="font-size:4rem;margin-bottom:1rem;">🔍</p>
+    <h1 style="font-size:1.5rem;font-weight:600;color:#111827;margin-bottom:.5rem;">Producto no encontrado</h1>
+    <p style="color:#6b7280;margin-bottom:2rem;">El producto que buscás no existe o fue eliminado.</p>
+    <a href="productos.html" class="btn-primary">Ver todos los productos</a>
+  </div>
+
+  <div id="footer-mount"></div>
+
+  <script>
+    let currentProduct = null;
+    let selectedVariant = null;
+    let selectedImage = 0;
+
+    function price() {
+      return selectedVariant ? selectedVariant.price : currentProduct.price;
+    }
+
+    function selectImage(idx) {
+      selectedImage = idx;
+      document.getElementById('main-img').src = currentProduct.images[idx];
+      document.querySelectorAll('.thumb-btn').forEach((btn, i) => {
+        btn.classList.toggle('active', i === idx);
+      });
+    }
+
+    function selectVariant(variantId) {
+      selectedVariant = currentProduct.variants.find(v => v.id === variantId);
+      document.querySelectorAll('.variant-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.vid === variantId);
+      });
+      document.getElementById('price-display').textContent = formatPrice(price());
+    }
+
+    function handleAddToCart() {
+      const cart = Alpine.store('cart');
+      const name = selectedVariant
+        ? `${currentProduct.name} - ${selectedVariant.name}`
+        : currentProduct.name;
+      cart.add({
+        productId: currentProduct.id,
+        variantId: selectedVariant?.id,
+        quantity: 1,
+        name,
+        price: price(),
+        image: currentProduct.images[0],
+      });
+      const btn = document.getElementById('add-to-cart-btn');
+      btn.textContent = '¡Agregado al carrito!';
+      btn.classList.add('success');
+      setTimeout(() => {
+        btn.textContent = 'Agregar al carrito';
+        btn.classList.remove('success');
+      }, 2000);
+    }
+
+    function renderDetail(p) {
+      const displayPrice = p.variants ? Math.min(...p.variants.map(v => v.price)) : p.price;
+      selectedVariant = p.variants ? p.variants[0] : null;
+      selectedImage = 0;
+
+      const thumbs = p.images.map((img, i) => `
+        <button class="thumb-btn${i === 0 ? ' active' : ''}" onclick="selectImage(${i})">
+          <img src="${img}" alt="${p.name} ${i+1}" loading="lazy">
+        </button>`).join('');
+
+      const variants = p.variants ? `
+        <div style="margin-top:1rem;">
+          <p style="font-size:.875rem;font-weight:600;color:#111827;margin-bottom:.75rem;">
+            Variante: <span id="variant-label" style="font-weight:400;color:#6b7280;">${selectedVariant?.name}</span>
+          </p>
+          <div style="display:flex;flex-direction:column;gap:.5rem;">
+            ${p.variants.map((v,i) => `
+              <button class="variant-btn${i === 0 ? ' active' : ''}" data-vid="${v.id}"
+                onclick="selectVariant('${v.id}');document.getElementById('variant-label').textContent='${v.name}'">
+                <span>${v.name}</span>
+                <span style="font-weight:600;">${formatPrice(v.price)}</span>
+              </button>`).join('')}
+          </div>
+        </div>` : '';
+
+      const tags = p.tags?.length ? `
+        <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.5rem;">
+          ${p.tags.map(t => `<span style="padding:.25rem .75rem;background:#f3f4f6;color:#6b7280;font-size:.75rem;border-radius:9999px;">#${t}</span>`).join('')}
+        </div>` : '';
+
+      return `
+        <div style="padding-top:2rem;padding-bottom:4rem;">
+          <!-- Breadcrumb -->
+          <div style="display:flex;align-items:center;gap:.5rem;font-size:.875rem;color:#6b7280;margin-bottom:2rem;flex-wrap:wrap;">
+            <a href="index.html" style="color:inherit;text-decoration:none;" onmouseover="this.style.color='#2563eb'" onmouseout="this.style.color='#6b7280'">Inicio</a>
+            <span>/</span>
+            <a href="productos.html" style="color:inherit;text-decoration:none;" onmouseover="this.style.color='#2563eb'" onmouseout="this.style.color='#6b7280'">Productos</a>
+            <span>/</span>
+            <a href="productos.html?categoria=${p.category}" style="color:inherit;text-decoration:none;text-transform:capitalize;" onmouseover="this.style.color='#2563eb'" onmouseout="this.style.color='#6b7280'">${p.category}</a>
+            <span>/</span>
+            <span style="color:#111827;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${p.name}</span>
+          </div>
+
+          <div class="grid-detail">
+            <!-- Galería -->
+            <div>
+              <div style="position:relative;aspect-ratio:1;border-radius:1.25rem;overflow:hidden;background:#f9fafb;border:1px solid #f3f4f6;margin-bottom:.75rem;">
+                <img id="main-img" src="${p.images[0]}" alt="${p.name}"
+                  style="width:100%;height:100%;object-fit:cover;transition:opacity .3s;">
+              </div>
+              ${p.images.length > 1 ? `<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;">${thumbs}</div>` : ''}
+            </div>
+
+            <!-- Info -->
+            <div style="display:flex;flex-direction:column;gap:1.25rem;">
+              <div>
+                <p style="font-size:.75rem;color:#2563eb;font-weight:500;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.25rem;">${p.brand}</p>
+                <h1 style="font-size:1.875rem;font-weight:300;color:#111827;line-height:1.25;margin-bottom:.75rem;">${p.name}</h1>
+                <div style="display:flex;align-items:center;gap:.5rem;">
+                  ${renderStars(p.rating)}
+                  <span style="font-size:.875rem;color:#6b7280;font-weight:500;">${p.rating.toFixed(1)} <span style="color:#9ca3af;">(${p.reviewCount} reseñas)</span></span>
+                </div>
+              </div>
+
+              <div style="border-top:1px solid #f3f4f6;border-bottom:1px solid #f3f4f6;padding:1.25rem 0;">
+                ${p.priceFrom ? '<p style="font-size:.75rem;color:#6b7280;margin-bottom:.25rem;">A partir de</p>' : ''}
+                <p id="price-display" style="font-size:2.5rem;font-weight:600;color:#111827;">${formatPrice(selectedVariant ? selectedVariant.price : p.price)}</p>
+                <p style="font-size:.875rem;color:#6b7280;margin-top:.25rem;">Precio en pesos argentinos</p>
+              </div>
+
+              ${variants}
+
+              <!-- CTAs -->
+              <div style="display:flex;flex-direction:column;gap:.75rem;">
+                <button id="add-to-cart-btn" class="btn-primary" onclick="handleAddToCart()" style="width:100%;justify-content:center;">
+                  <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/>
+                    <path d="M16 10a4 4 0 01-8 0"/>
+                  </svg>
+                  Agregar al carrito
+                </button>
+                <a href="${p.mercadoPagoLink || 'https://www.mercadopago.com.ar/'}"
+                  target="_blank" rel="noopener noreferrer" class="btn-outline" style="width:100%;justify-content:center;">
+                  <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                  </svg>
+                  Comprar con Mercado Pago
+                </a>
+              </div>
+
+              <!-- Beneficios -->
+              <div style="background:#f9fafb;border-radius:.75rem;padding:1rem;display:flex;flex-direction:column;gap:.75rem;">
+                <div style="display:flex;align-items:center;gap:.75rem;font-size:.875rem;color:#4b5563;">
+                  <svg width="16" height="16" fill="none" stroke="#2563eb" stroke-width="2" viewBox="0 0 24 24">
+                    <rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4a2 2 0 012 2v6a2 2 0 01-2 2h-1"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+                  </svg>
+                  Envío a todo el país
+                </div>
+                <div style="display:flex;align-items:center;gap:.75rem;font-size:.875rem;color:#4b5563;">
+                  <svg width="16" height="16" fill="none" stroke="#2563eb" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  </svg>
+                  Compra protegida por Mercado Pago
+                </div>
+              </div>
+
+              <!-- Descripción -->
+              <div>
+                <h2 style="font-weight:600;color:#111827;margin-bottom:.75rem;">Descripción</h2>
+                <p style="font-size:.875rem;color:#6b7280;line-height:1.7;">${p.description}</p>
+              </div>
+
+              ${tags}
+            </div>
+          </div>
+        </div>`;
+    }
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      document.getElementById('header-mount').innerHTML = renderHeader();
+      document.getElementById('footer-mount').innerHTML = renderFooter();
+
+      const slug = new URLSearchParams(location.search).get('slug');
+      if (!slug) {
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('not-found').style.display = 'block';
+        return;
+      }
+
+      const res = await fetch('data/products.json');
+      const products = await res.json();
+      const product = products.find(p => p.slug === slug);
+
+      document.getElementById('loading').style.display = 'none';
+
+      if (!product) {
+        document.getElementById('not-found').style.display = 'block';
+        return;
+      }
+
+      currentProduct = product;
+      document.title = `${product.name} | House Of Everything`;
+      document.getElementById('meta-title').textContent = `${product.name} | House Of Everything`;
+      document.getElementById('meta-desc').content = product.description;
+
+      const detail = document.getElementById('product-detail');
+      detail.innerHTML = renderDetail(product);
+      detail.style.display = 'block';
+    });
+  </script>
+</body>
+</html>

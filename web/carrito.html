@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi carrito | House Of Everything</title>
+  <meta name="description" content="Revisá los productos en tu carrito antes de pagar con Mercado Pago.">
+  <link rel="stylesheet" href="css/styles.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script defer src="js/main.js"></script>
+</head>
+<body x-data>
+
+  <div id="header-mount"></div>
+
+  <div class="container" style="padding-top:2.5rem;padding-bottom:5rem;"
+    x-data="cartPage()"
+    x-init="init()">
+
+    <!-- Empty -->
+    <div x-show="count === 0" style="text-align:center;padding:6rem 1rem;">
+      <div style="width:5rem;height:5rem;background:#f3f4f6;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;">
+        <svg width="40" height="40" fill="none" stroke="#9ca3af" stroke-width="1.5" viewBox="0 0 24 24">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 01-8 0"/>
+        </svg>
+      </div>
+      <h1 style="font-size:1.5rem;font-weight:300;color:#111827;margin-bottom:.75rem;">Tu carrito está vacío</h1>
+      <p style="color:#6b7280;margin-bottom:2rem;">Agregá productos para comenzar tu compra</p>
+      <a href="productos.html" class="btn-primary">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        Explorar productos
+      </a>
+    </div>
+
+    <!-- Con items -->
+    <div x-show="count > 0">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;flex-wrap:wrap;gap:1rem;">
+        <h1 style="font-size:1.875rem;font-weight:300;color:#111827;">
+          Mi carrito
+          <span style="font-size:1.25rem;font-weight:400;color:#9ca3af;" x-text="`(${count} productos)`"></span>
+        </h1>
+        <button @click="clearAll()"
+          style="font-size:.75rem;color:#9ca3af;background:none;border:none;cursor:pointer;text-decoration:underline;"
+          onmouseover="this.style.color='#ef4444'" onmouseout="this.style.color='#9ca3af'">
+          Vaciar carrito
+        </button>
+      </div>
+
+      <div class="grid-cart">
+        <!-- Items: ocupa 2 columnas en desktop -->
+        <div style="grid-column: span 1;" class="cart-items-col">
+          <template x-for="item in items" :key="`${item.productId}-${item.variantId}`">
+            <div style="display:flex;gap:1rem;background:#fff;border:1px solid #f3f4f6;border-radius:1rem;padding:1rem;margin-bottom:.75rem;">
+              <a :href="`producto.html?slug=${item.productId}`"
+                style="flex-shrink:0;width:6rem;height:6rem;border-radius:.75rem;overflow:hidden;background:#f9fafb;display:block;">
+                <img :src="item.image" :alt="item.name" style="width:100%;height:100%;object-fit:cover;">
+              </a>
+              <div style="flex:1;min-width:0;">
+                <p style="font-weight:500;color:#111827;font-size:.875rem;margin-bottom:.25rem;" class="clamp-2" x-text="item.name"></p>
+                <p style="color:#2563eb;font-weight:600;font-size:.875rem;" x-text="fmtP(item.price)"></p>
+                <div style="display:flex;align-items:center;gap:.75rem;margin-top:.75rem;">
+                  <div style="display:flex;align-items:center;border:1px solid #e5e7eb;border-radius:.5rem;padding:.25rem;">
+                    <button class="qty-btn" @click="updateQty(item, item.quantity - 1)">
+                      <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    </button>
+                    <span style="width:1.5rem;text-align:center;font-size:.875rem;font-weight:500;" x-text="item.quantity"></span>
+                    <button class="qty-btn" @click="updateQty(item, item.quantity + 1)">
+                      <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    </button>
+                  </div>
+                  <button @click="removeItem(item)"
+                    style="margin-left:auto;background:none;border:none;cursor:pointer;color:#d1d5db;"
+                    onmouseover="this.style.color='#ef4444'" onmouseout="this.style.color='#d1d5db'">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div style="flex-shrink:0;text-align:right;">
+                <p style="font-weight:600;color:#111827;" x-text="fmtP(item.price * item.quantity)"></p>
+              </div>
+            </div>
+          </template>
+        </div>
+
+        <!-- Resumen -->
+        <div>
+          <div style="background:#f9fafb;border-radius:1.25rem;padding:1.5rem;position:sticky;top:5rem;">
+            <h2 style="font-weight:600;color:#111827;font-size:1.125rem;margin-bottom:1.25rem;">Resumen del pedido</h2>
+
+            <div style="display:flex;flex-direction:column;gap:.75rem;font-size:.875rem;">
+              <template x-for="item in items" :key="`sum-${item.productId}-${item.variantId}`">
+                <div style="display:flex;justify-content:space-between;color:#6b7280;">
+                  <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-right:.5rem;" x-text="`${item.name} × ${item.quantity}`"></span>
+                  <span style="flex-shrink:0;font-weight:500;" x-text="fmtP(item.price * item.quantity)"></span>
+                </div>
+              </template>
+            </div>
+
+            <div style="border-top:1px solid #e5e7eb;margin-top:1.25rem;padding-top:1.25rem;display:flex;justify-content:space-between;align-items:center;">
+              <span style="font-weight:600;color:#111827;">Total</span>
+              <span style="font-size:1.5rem;font-weight:700;color:#111827;" x-text="fmtP(total)"></span>
+            </div>
+            <p style="font-size:.75rem;color:#9ca3af;margin-top:.25rem;">Precio en pesos argentinos</p>
+
+            <a :href="mpLink" target="_blank" rel="noopener noreferrer" class="btn-primary"
+              style="width:100%;justify-content:center;margin-top:1.5rem;">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+              </svg>
+              Pagar con Mercado Pago
+            </a>
+            <p style="font-size:.75rem;color:#9ca3af;text-align:center;margin-top:.75rem;">
+              Serás redirigido a Mercado Pago de forma segura
+            </p>
+
+            <a href="productos.html" class="btn-outline" style="width:100%;justify-content:center;margin-top:.75rem;font-size:.875rem;">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+              </svg>
+              Seguir comprando
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="footer-mount"></div>
+
+  <script>
+    // Fix grid para 2+1 columnas en desktop
+    const style = document.createElement('style');
+    style.textContent = `
+      @media(min-width:1024px){
+        .grid-cart { grid-template-columns: 1fr 1fr 1fr; }
+        .cart-items-col { grid-column: span 2; }
+      }
+    `;
+    document.head.appendChild(style);
+
+    function cartPage() {
+      return {
+        mpLink: 'https://www.mercadopago.com.ar/',
+        get items() { return Alpine.store('cart').items; },
+        get count() { return Alpine.store('cart').count; },
+        get total() { return Alpine.store('cart').total; },
+        fmtP: formatPrice,
+        init() {},
+        updateQty(item, qty) {
+          Alpine.store('cart').updateQty(item.productId, qty, item.variantId);
+        },
+        removeItem(item) {
+          Alpine.store('cart').remove(item.productId, item.variantId);
+        },
+        clearAll() {
+          if (confirm('¿Querés vaciar el carrito?')) Alpine.store('cart').clear();
+        },
+      };
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('header-mount').innerHTML = renderHeader('carrito');
+      document.getElementById('footer-mount').innerHTML = renderFooter();
+    });
+  </script>
+</body>
+</html>
